@@ -2,7 +2,7 @@
   (:use     [ring.util.response :only [redirect response resource-response]]
             [ring.middleware.transit :only
              [wrap-transit-response wrap-transit-body]])
-  (:require [compojure.core :refer [GET defroutes]]
+  (:require [compojure.core :refer [GET POST defroutes]]
             [compojure.route :refer [not-found resources]]
             [compojure.handler :as handler]
             [hiccup.page :refer [include-js include-css html5]]
@@ -10,6 +10,7 @@
             ;[ring.middleware.cors :refer [wrap-cors]]
             [config.core :refer [env]]
             [wtdash.oauth :as oauth]
+            [wtdash.senteserver :as sys]
             [ring.middleware.reload :refer [wrap-reload]]))
 
 (def mount-target
@@ -44,10 +45,11 @@
        ;(loading-page))
        ;(println oauth/verifed-appsmiths)
     oauth/verifed-appsmiths)
-
+  (GET  "/chsk" req (sys/ring-ws-handoff req))
+  (POST "/chsk" req (sys/ring-ws-post req))
+  (POST "/login" req (sys/login-handler req))
   ;(GET "/" [] (loading-page))
   ;(GET "/about" [] (loading-page))
-  
   (resources "/")
   (not-found "Not Found"))
 
@@ -58,7 +60,7 @@
       (wrap-reload)
       ;(wrap-cors :access-control-allow-origin [#".*"]
       ;           :access-control-allow-methods [:get :put :post :delete])
-      (wrap-transit-response {:encoding :json, :opts {}})
+      ;(wrap-transit-response {:encoding :json, :opts {}})
       (wrap-transit-body)
       ;(wrap-exceptions)
       (handler/site)))

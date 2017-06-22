@@ -24,7 +24,11 @@
                   :exclusions [org.clojure/tools.reader]]
                  [stuarth/clj-oauth2 "0.3.2"]
                  [cheshire "5.7.1"]
-                 [clj-http "0.6.1" :exclusions [common-io]]]
+                 [clj-http "0.6.1" :exclusions [common-io]]
+                 [durable-atom "0.0.3"]
+                 [com.taoensso/sente "1.11.0"]
+                 [com.taoensso/timbre "4.7.4"]
+                 [http-kit "2.2.0"]]
 
 
   :plugins [[lein-environ "1.0.2"]
@@ -32,7 +36,7 @@
             [lein-asset-minifier "0.2.7"
              :exclusions [org.clojure/clojure]]]
 
-  :ring {:handler wtdash.handler/app
+  :ring {:handler wtdash.handler/wrap-app
          :uberwar-name "wtdash.war"}
 
   :min-lein-version "2.5.0"
@@ -46,7 +50,7 @@
    [:cljsbuild :builds :app :compiler :output-dir]
    [:cljsbuild :builds :app :compiler :output-to]]
 
-  :source-paths ["src/clj" "src/cljc"]
+  :source-paths ["src/clj"]
   :resource-paths ["resources" "target/cljsbuild"]
 
   :minify-assets
@@ -60,7 +64,7 @@
 
   :cljsbuild
   {:builds {:min
-            {:source-paths ["src/cljs" "src/cljc" "env/prod/cljs"]
+            {:source-paths ["src/cljs" "env/prod/cljs"]
              :compiler
              {:output-to "target/cljsbuild/public/js/compiled/app.js"
               :output-dir "target/uberjar"
@@ -70,7 +74,7 @@
               :optimizations :advanced
               :pretty-print  false}}
             :app
-            {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
+            {:source-paths ["src/cljs" "env/dev/cljs"]
              :figwheel {:on-jsload "wtdash.core/mount-root"}
              :compiler
              {:main "wtdash.dev"
@@ -92,7 +96,7 @@
    :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"]
 
    :css-dirs ["resources/public/css"]
-   :ring-handler wtdash.handler/app}
+   :ring-handler wtdash.handler/wrap-app}
 
   :profiles {:dev {:repl-options {:init-ns wtdash.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
@@ -116,7 +120,7 @@
                    :env {:dev true}}
 
              :uberjar {
-                       ;:hooks [minify-assets.plugin/hooks]
+                       :hooks [minify-assets.plugin/hooks]
                        :source-paths ["env/prod/clj" "env/prod/cljs"]
                        :prep-tasks ["compile" ["cljsbuild" "once" "app"] ["minify-assets"]]
                        :env {:production true}

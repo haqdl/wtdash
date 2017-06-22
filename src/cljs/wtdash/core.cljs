@@ -67,5 +67,4 @@
      (fn [path]
        (secretary/locate-route path))})
   (accountant/dispatch-current!)
-  (print "init website")
   (mount-root))

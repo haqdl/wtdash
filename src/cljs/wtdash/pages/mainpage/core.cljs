@@ -103,6 +103,7 @@
 
      [:div {:style {:height "50px" :text-align "center" :font-weight "600" :font-size "large"}} "Wells Summary"]
      ;[WellPicker]
+     (.log js/console db/well-data)
      [well-summary-table db/well-data
       #(do
          (reset-chart)
