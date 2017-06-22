@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22d992be-2f74-42c8-9495-9f41baef8b73" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Leiningen__commons_io_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cljc/wtdash/util.cljc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clj/wtdash/handler.clj" afterPath="$PROJECT_DIR$/src/clj/wtdash/handler.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/clj/wtdash/server.clj" afterPath="$PROJECT_DIR$/src/clj/wtdash/server.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cljs/wtdash/core.cljs" afterPath="$PROJECT_DIR$/src/cljs/wtdash/core.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cljs/wtdash/data/db.cljs" afterPath="$PROJECT_DIR$/src/cljs/wtdash/data/db.cljs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cljs/wtdash/pages/mainpage/core.cljs" afterPath="$PROJECT_DIR$/src/cljs/wtdash/pages/mainpage/core.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wtdash.iml" afterPath="$PROJECT_DIR$/wtdash.iml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,21 +17,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="core.cljs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="core.cljs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cljs/wtdash/pages/mainpage/core.cljs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="109" column="28" lean-forward="true" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="784">
+              <caret line="128" column="28" lean-forward="false" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="28" />
+              <folding>
+                <element signature="e#1599#2552#0" expanded="false" />
+                <element signature="e#2554#3377#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="db.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/clj/wtdash/db.clj">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="84" />
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -594,19 +588,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cljs/wtdash/pages/mainpage/core.cljs">
+    <entry file="file://$PROJECT_DIR$/src/clj/wtdash/db.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="109" column="28" lean-forward="true" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="84" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/clj/wtdash/db.clj">
+    <entry file="file://$PROJECT_DIR$/src/cljs/wtdash/pages/mainpage/core.cljs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="84" />
-          <folding />
+        <state relative-caret-position="784">
+          <caret line="128" column="28" lean-forward="false" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="28" />
+          <folding>
+            <element signature="e#1599#2552#0" expanded="false" />
+            <element signature="e#2554#3377#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

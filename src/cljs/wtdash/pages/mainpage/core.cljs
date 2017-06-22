@@ -35,6 +35,16 @@
                            (js/Highcharts.Chart. (reagent/dom-node this)
                                                  (clj->js (test-chart-config db/chart-data))))}))
 
+(defn upload-btn [file-name]
+  [:span.upload-label
+   [:label
+    [:input.hidden-xs-up
+     {:type "file" :accept ".csv" :on-change put-upload}]
+    [:i.fa.fa-upload.fa-lg]
+    (or file-name "click here to upload and render csv...")]
+   (when file-name
+     [:i.fa.fa-times {:on-click #(reset! app-state {})}])])
+
 ;;------------Data table------------------------------------------------------------
 (defn well-summary-table [data on-select-fn]
   (fn []
@@ -116,7 +126,9 @@
     [:div{:style {:width "95%" :align "center" :margin "40px 20px 20px 20px"}}
 
      [:div {:style {:height "150px" :text-align "center" :font-weight "600" :font-size "large"}} "Well Test History"]
-     [welltest-table db/welltest-data]]]])
-     ;[welltest-table-display]]]])
+     [welltest-table db/welltest-data]]]
 
+     ;[welltest-table-display]]]])
+   [:div.topbar.hidden-print
+    [upload-btn]]])
 ;; -------------------------
