@@ -9,7 +9,6 @@
       <sourceFolder url="file://$MODULE_DIR$/env/dev/cljs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/clj" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/cljc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/env/prod/cljs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/cljs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/env/dev/clj" isTestSource="false" />

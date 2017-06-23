@@ -11,6 +11,8 @@
                  [ring "1.6.1"]
                  [ring/ring-defaults "0.3.0"]
                  [ring-transit "0.1.6" :exclusions [commons-codec]]
+                 [ring/ring-json "0.3.1"]
+                 [ring-cors "0.1.8"]
                  ;[ring/ring-core "1.5.1"]
                  [compojure "1.6.0"]
                  [cljsjs/highcharts "5.0.4-0"]
@@ -28,8 +30,8 @@
                  [durable-atom "0.0.3"]
                  [com.taoensso/sente "1.11.0"]
                  [com.taoensso/timbre "4.7.4"]
-                 [http-kit "2.2.0"]]
-
+                 [http-kit "2.2.0"]
+                 [cljsjs/d3 "3.5.16-0"]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.5"]
@@ -59,7 +61,8 @@
     "resources/public/js/compiled/site.min.js"
     ["src/cljs/js/external/adminlte.js"
      "src/cljs/js/external/datatables.min.js"
-     "src/cljs/js/external/dataTables.select.min.js"]}}
+     "src/cljs/js/external/dataTables.select.min.js"
+     "src/cljs/js/tubingpipe.js"]}}
 
 
   :cljsbuild
@@ -70,7 +73,8 @@
               :output-dir "target/uberjar"
               :externs ["src/cljs/js/externs/datatables.ext.js"
                         "src/cljs/js/externs/adminlte.ext.js"
-                        "src/cljs/js/highchart.ext.js"]
+                        "src/cljs/js/highchart.ext.js"
+                        "src/cljs/js/externs/tubingpipe.ext.js"]
               :optimizations :advanced
               :pretty-print  false}}
             :app
@@ -83,7 +87,8 @@
               :output-dir "resources/public/js/out"
               :externs ["src/cljs/js/externs/datatables.ext.js"
                         "src/cljs/js/externs/adminlte.ext.js"
-                        "src/cljs/js/highchart.ext.js"]
+                        "src/cljs/js/highchart.ext.js"
+                        "src/cljs/js/externs/tubingpipe.ext.js"]
               :source-map true
               :optimizations :none
               :pretty-print  true}}}}

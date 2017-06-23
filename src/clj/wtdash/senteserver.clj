@@ -10,7 +10,7 @@
 (let [;; Serializtion format, must use same val for client + server:
       packer :edn ; Default packer, a good choice in most cases
       ;; (sente-transit/get-transit-packer) ; Needs Transit dep
-
+      ;(println "packer" packer)
       chsk-server
       (sente/make-channel-socket-server!
         (get-sch-adapter) {:packer packer})
@@ -96,5 +96,4 @@
         (log/info "Unmatched event: " id " data: " data)))))
 
 (defn ws-message-router []
-  (println "start sente")
   (sente/start-chsk-router-loop! (ws-msg-handler) receive-channel))

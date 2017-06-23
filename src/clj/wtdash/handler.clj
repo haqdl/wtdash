@@ -2,12 +2,12 @@
   (:use     [ring.util.response :only [redirect response resource-response]]
             [ring.middleware.transit :only
              [wrap-transit-response wrap-transit-body]])
-  (:require [compojure.core :refer [GET POST defroutes]]
+  (:require [compojure.core :refer (defroutes GET POST)]
             [compojure.route :refer [not-found resources]]
             [compojure.handler :as handler]
             [hiccup.page :refer [include-js include-css html5]]
             [wtdash.middleware :refer [wrap-middleware]]
-            ;[ring.middleware.cors :refer [wrap-cors]]
+            [ring.middleware.cors :refer [wrap-cors]]
             [config.core :refer [env]]
             [wtdash.oauth :as oauth]
             [wtdash.senteserver :as sys]
@@ -34,6 +34,35 @@
      mount-target
      (include-js "/js/app.js")]))
 
+(defn- format-exception
+  "creates a string describing exception"
+  [ex]
+  (let [sw (java.io.StringWriter.)]
+    (binding [*out* sw]
+      (println "Exception Occured: " (.getMessage ex))
+      (println "Traceback follows:")
+      (doseq [st (.getStackTrace ex)]
+        (println (.toString st))))
+    (.toString sw)))
+
+(defn wrap-exceptions [handler]
+  "Turns exceptions into HTTP error responses"
+  (fn [request]
+    (let [foo
+          (try (handler request)
+               (catch Exception e
+                 {:status 500
+                  :headers {"Content-Type" "text/plain"}
+                  :body (format-exception e)}))]
+      foo)))
+
+(defn- wrap-request-logging [handler]
+  (fn [{:keys [request-method uri] :as req}]
+    (let [resp (handler req)]
+      (println (name request-method) (:status resp)
+               (if-let [qs (:query-string req)]
+                 (str uri "?" qs) uri))
+      resp)))
 
 (defroutes routes
 
@@ -58,10 +87,10 @@
 (def wrapped-app
   (-> app
       (wrap-reload)
-      ;(wrap-cors :access-control-allow-origin [#".*"]
-      ;           :access-control-allow-methods [:get :put :post :delete])
-      ;(wrap-transit-response {:encoding :json, :opts {}})
+      (wrap-cors :access-control-allow-origin [#".*"]
+                 :access-control-allow-methods [:get :put :post :delete])
+      (wrap-transit-response {:encoding :json, :opts {}})
       (wrap-transit-body)
-      ;(wrap-exceptions)
-      (handler/site)))
-      ;(wrap-request-logging)))
+      (wrap-exceptions)
+      (handler/site)
+      (wrap-request-logging)))
